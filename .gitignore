@@ -1,0 +1,23 @@
+# LaTeX build artifacts
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+
+# Generated local package and duplicate root PDF
+/paper.zip
+/manuscript.pdf
+
+# Keep final compiled PDF only in output/
+/output/*
+!/output/manuscript.pdf
+
+# OS/editor files
+.DS_Store
+*.swp
+*~

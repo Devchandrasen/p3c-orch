@@ -1,0 +1,17 @@
+\section{Related Work}
+\subsection{UAV Caching and Data Delivery in LAE}
+Caching can reduce repeated backhaul access and improve latency when content demand is skewed. The coded caching result in \cite{maddahali2014fundamental} provides a basic reference for cache-aided delivery. MUCCO is the closest LAE caching and deployment work for this paper. It jointly optimizes coded caching, user grouping, and UAV deployment, and it uses projected-distance-based grouping, semidefinite programming, and matching theory for energy-efficient data delivery \cite{wei2025mucco}. In contrast, \pchorch\ does not focus on coded caching design. It uses useful cache value as one part of a predictive service-assignment score that also includes link risk, dwell cost, delay, and energy.
+
+\subsection{UAV Swarm Communication and Routing}
+UAV-swarm communication has been studied for emergency and post-disaster networks. The post-disaster communication work in \cite{zheng2025postdisaster} builds a collaborative self-organizing network using collaborative beamforming, Ford-Fulkerson style routing, and diffusion-model-enabled particle swarm optimization. Its main goal is transmission-rate maximization. This motivates the RateMax baseline in our experiments. Our setting is different because users generate content requests over time and the scheduler must consider cache state, mobility-aware handover, and predicted link risk.
+
+\subsection{UAV Swarm Task Collaboration and Stability}
+Task collaboration among large UAV swarms is related to orchestration, but it has a different control objective. The work in \cite{zhou2026dynamic} proposes asynchronous two-layer task collaboration with energy constraints and Lyapunov-based analysis. It focuses on task-volume consensus and hierarchical collaboration. This paper does not claim a new consensus theorem. Instead, \pchorch\ schedules service assignments for communication, caching, and computation. We include \psr\ as a stability-regularized internal variant, but the final claim is based on measured paper-lock results.
+
+\subsection{Link-Risk Prediction and Environmental Uncertainty}
+Air-to-ground links depend on altitude, elevation angle, path loss, and line-of-sight probability. We use the standard low-altitude platform path-loss model in \cite{alhourani2014lap} as a basis for simulation. UAV energy and movement cost are also important, and UAV communication energy models such as \cite{zeng2019rotary} motivate including energy in the scheduler. Our project notes and user presentation reported clear, rainy, and rain-hot link-margin degradation, wider residuals in harsh weather, and link instability due to speed mismatch. Hence, \pchorch\ uses a link-margin predictor and weather-wise risk calibration rather than relying only on current observed margin.
+
+\subsection{Summary of Gap}
+Table~\ref{tab:related_work} summarizes the difference. Different from these works, \pchorch\ uses predicted link risk, useful cache value, dwell cost, delay, energy, and outage together for service assignment.
+
+\input{tables/comparison_related_work}

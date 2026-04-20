@@ -1,0 +1,17 @@
+\begin{algorithm}[!t]
+\caption{\psr\ Stability-Regularized Scheduling}
+\label{alg:p3csr}
+\begin{algorithmic}[1]
+\REQUIRE Same inputs as Algorithm~\ref{alg:p3clr}, stability weight $w_q$, load regularization $\lambda$
+\ENSURE Stability-regularized assignment and updated states
+\STATE Build all feasible pair terms as in Algorithm~\ref{alg:p3clr}.
+\FOR{each feasible pair $(s,k)$}
+    \STATE Compute urgency $U_{k,t}=Q_{k,t}/\max(\tau_{k,t}-t+1,1)$.
+    \STATE Compute $G_{s,k,t}=U_{k,t}\mu_{s,k,t}-\lambda L_{s,t}\mu_{s,k,t}$.
+    \STATE Normalize $G_{s,k,t}$ over feasible pairs.
+    \STATE Compute $B^{\mathrm{SR}}_{s,k,t}=B_{s,k,t}+w_q\norm{G}_{s,k,t}$.
+\ENDFOR
+\STATE Assign clusters using the same greedy order and dwell guard.
+\STATE Update queue, cache, energy, outage, delay, and handover states.
+\end{algorithmic}
+\end{algorithm}

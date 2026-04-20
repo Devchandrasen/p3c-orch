@@ -1,0 +1,10 @@
+\section{Experimental Setup}
+The experiment uses the final paper-lock outputs only. The simulator is time-slotted and uses a $1000\,\mathrm{m}\times1000\,\mathrm{m}$ area with heterogeneous UAV swarms, moving users, dynamic content requests, finite caches, and Markov weather. The altitude range is $100$--$200$ m. Users move with Gauss--Markov mobility and request files from a Zipf-distributed library. Demand clusters are formed from active requesting users.
+
+The evaluated regimes are: R1 normal load, R2 near saturation, R3 overload, R4 severe burst, R5 harsh weather, R6 high mobility, and R7 combined stress. The main paper discussion focuses on harsh weather, high mobility, and combined stress, but all regimes are reported.
+
+The compared methods are Random, Nearest, RateMax, MUCCO-like, Reactive-3C, \pclr, \psr, \etp, OracleLink Upper Bound, and OracleSelector Upper Bound. OracleLink uses true next-slot link margin. OracleSelector uses hindsight selection. Both are upper bounds and are excluded from practical ranking.
+
+The paper-lock blind seeds are $4001$--$4080$, giving 80 paired runs per regime and method. Earlier seeds from Pilot-0, v2, and v3 are treated only as development evidence. No tuning was run on the paper-lock seeds. The seed audit passed all checks, including seed disjointness, frozen configuration before the run, no tuning, identical seeds/regimes for all methods, and exclusion of Oracle methods from practical ranking. The implementation will be made available at: \url{https://github.com/Devchandrasen/p3c-orch}. % GitHub link set for the project repository.
+
+The primary metrics are average delay, p95 delay, total energy consumption, handovers per 100 active cluster-slots, useful cache hit ratio, outage probability, throughput, and drop rate. Secondary metrics include backlog, SLA violations, load imbalance, fairness, computation overhead, and predictor error. Results are reported as mean $\pm$ 95\% confidence interval over the blind seeds when available.

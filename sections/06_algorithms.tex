@@ -1,0 +1,17 @@
+\section{P3C-SR and Internal Variants}
+\pclr\ is the lightweight practical controller. We also study \psr, which adds a stability regularizer to the same predictive 3C score. The regularizer is
+\begin{equation}
+G_{s,k,t}=U_{k,t}\mu_{s,k,t}-\lambda L_{s,t}\mu_{s,k,t},
+\label{eq:stability_gain}
+\end{equation}
+where $U_{k,t}=Q_{k,t}/\max(\tau_{k,t}-t+1,1)$ is the deadline-aware urgency and $L_{s,t}$ is the swarm load. The \psr\ score is
+\begin{equation}
+B^{\mathrm{SR}}_{s,k,t}=B_{s,k,t}+w_q\norm{G}_{s,k,t}.
+\label{eq:p3csr_score}
+\end{equation}
+The term is a regularizer and not the only design objective. It can help when backlog and deadline risk are high, but it can also affect energy, cache use, and throughput. Therefore, we report \psr\ as an internal variant rather than replacing the practical core.
+
+\etp\ was also tested as an exploratory event-triggered ablation. It activates a bounded stability impulse only under high-risk states. In the paper-lock results, \etp\ is close to \pclr\ and \psr, but it does not give a clear statistically reliable gain. Hence, \etp\ is not used as the main method.
+
+\input{algorithms/alg_p3clr}
+\input{algorithms/alg_p3csr}

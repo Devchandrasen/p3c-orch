@@ -1,0 +1,20 @@
+\begin{table*}[!t]
+\centering
+\caption{Ablation results under combined stress. Energy is in kJ and ratio metrics are in percent.}
+\label{tab:ablation}
+\scriptsize
+\begin{tabular}{lcccccccc}
+\toprule
+Variant & Avg Delay & p95 Delay & Energy & Handovers & Useful Cache & Outage & Drop & Throughput \\
+\midrule
+P3C-LR Core & 6.26 & 7.94 & 16.87 & 2.99 & 28.16 & 0.88 & 38.18 & 647.3 \\
+No ANN prediction & 6.33 & 8.12 & 16.78 & 3.65 & 27.51 & 0.91 & 37.87 & 649.3 \\
+No cache value & 6.46 & 8.12 & 20.21 & 3.35 & 0.00 & 0.79 & 38.39 & 645.4 \\
+No mobility-aware dwell & 6.18 & 8.02 & 16.65 & 24.02 & 27.69 & 0.67 & 38.17 & 649.3 \\
+No link-risk calibration & 6.28 & 8.14 & 16.64 & 2.95 & 28.47 & 0.96 & 38.03 & 644.3 \\
+No neighbor cache & 6.29 & 7.94 & 17.28 & 3.09 & 14.21 & 0.90 & 38.52 & 643.3 \\
+P3C-SR & 6.29 & 7.97 & 16.94 & 2.71 & 28.21 & 0.81 & 37.88 & 651.6 \\
+ET-P3C & 6.26 & 7.91 & 16.93 & 2.60 & 27.80 & 0.91 & 38.14 & 647.1 \\
+\bottomrule
+\end{tabular}
+\end{table*}

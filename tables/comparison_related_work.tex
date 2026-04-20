@@ -1,0 +1,16 @@
+\begin{table*}[!t]
+\centering
+\caption{Comparison with closely related UAV-swarm and LAE works.}
+\label{tab:related_work}
+\tiny
+\begin{tabular}{p{0.105\textwidth}p{0.105\textwidth}p{0.065\textwidth}p{0.115\textwidth}p{0.065\textwidth}p{0.105\textwidth}p{0.065\textwidth}p{0.155\textwidth}}
+\toprule
+Work & Main focus & Caching & Routing/communication & Prediction & Mobility/handover & 3C orchestration & Main limitation \\
+\midrule
+MUCCO~\cite{wei2025mucco} & Energy-efficient data delivery & Yes & Coverage and grouping & No & Mobility-aware deployment & Partial & No ANN link-risk prediction or dwell-aware multi-swarm predictive 3C scheduling \\
+Post-disaster UAV swarm~\cite{zheng2025postdisaster} & Transmission-rate maximization & No & Collaborative beamforming and routing & No & Placement optimization & Partial & No cache-value-aware dynamic content scheduling \\
+Dynamic task collaboration~\cite{zhou2026dynamic} & Task collaboration and consensus & No & Control network & No & Two-layer asynchronous control & No & Focuses on task-volume collaboration, not service-level 3C orchestration \\
+P3C-Orch & Predictive service orchestration & Useful cache value & Link-risk-aware assignment & ANN link-risk & Dwell guard & Yes & Simulation-based; real UAV traces still needed \\
+\bottomrule
+\end{tabular}
+\end{table*}

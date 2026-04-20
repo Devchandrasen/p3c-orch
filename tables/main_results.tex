@@ -1,0 +1,22 @@
+\begin{table*}[!t]
+\centering
+\caption{Combined-stress paper-lock results on blind seeds 4001--4080. Energy is in kJ. Cache, outage, and drop are in percent. Oracle methods are upper bounds and excluded from practical ranking.}
+\label{tab:main_results}
+\tiny
+\begin{tabular}{lccccccccc}
+\toprule
+Method & Avg Delay & p95 Delay & Energy & Handovers/100 & Useful Cache & Outage & Drop & Throughput & Objective \\
+\midrule
+Random & 6.32 $\pm$ 0.05 & \textbf{7.70 $\pm$ 0.08} & 20.19 $\pm$ 0.20 & 58.15 $\pm$ 0.48 & 0.00 $\pm$ 0.00 & 1.31 $\pm$ 0.10 & 41.55 $\pm$ 1.91 & 598.3 $\pm$ 4.7 & 2.995 $\pm$ 0.025 \\
+Nearest & 6.52 $\pm$ 0.04 & 7.89 $\pm$ 0.08 & 19.50 $\pm$ 0.27 & \textbf{1.33 $\pm$ 0.16} & 0.00 $\pm$ 0.00 & \textbf{0.23 $\pm$ 0.02} & 42.17 $\pm$ 1.82 & 591.6 $\pm$ 8.8 & 0.732 $\pm$ 0.012 \\
+RateMax & 6.40 $\pm$ 0.04 & 7.72 $\pm$ 0.07 & 20.19 $\pm$ 0.20 & 34.40 $\pm$ 0.60 & 0.00 $\pm$ 0.00 & 0.82 $\pm$ 0.06 & 43.08 $\pm$ 1.94 & 583.5 $\pm$ 4.7 & 2.085 $\pm$ 0.024 \\
+MUCCO-like & 6.28 $\pm$ 0.07 & 8.06 $\pm$ 0.09 & \textbf{16.57 $\pm$ 0.15} & 17.49 $\pm$ 0.54 & 26.63 $\pm$ 0.62 & 0.79 $\pm$ 0.07 & \textbf{37.29 $\pm$ 1.93} & \textbf{653.4 $\pm$ 5.7} & 1.228 $\pm$ 0.024 \\
+Reactive-3C & 6.26 $\pm$ 0.07 & 8.02 $\pm$ 0.10 & 16.69 $\pm$ 0.14 & 3.86 $\pm$ 0.22 & \textbf{27.71 $\pm$ 0.60} & 0.96 $\pm$ 0.07 & 37.98 $\pm$ 1.91 & 643.8 $\pm$ 5.7 & 0.731 $\pm$ 0.018 \\
+P3C-LR Core & \textbf{6.22 $\pm$ 0.07} & 7.85 $\pm$ 0.10 & 16.81 $\pm$ 0.16 & 2.92 $\pm$ 0.22 & 27.42 $\pm$ 0.68 & 0.88 $\pm$ 0.06 & 38.18 $\pm$ 1.84 & 643.4 $\pm$ 6.5 & 0.684 $\pm$ 0.016 \\
+P3C-SR & 6.24 $\pm$ 0.07 & 7.87 $\pm$ 0.10 & 16.89 $\pm$ 0.15 & 2.77 $\pm$ 0.19 & 27.45 $\pm$ 0.63 & 0.81 $\pm$ 0.05 & 37.82 $\pm$ 1.90 & 647.3 $\pm$ 6.2 & \textbf{0.671 $\pm$ 0.016} \\
+ET-P3C & 6.22 $\pm$ 0.07 & 7.84 $\pm$ 0.10 & 16.82 $\pm$ 0.15 & 2.76 $\pm$ 0.19 & 27.44 $\pm$ 0.67 & 0.88 $\pm$ 0.06 & 38.13 $\pm$ 1.83 & 643.4 $\pm$ 6.3 & 0.680 $\pm$ 0.017 \\
+\textit{OracleLink Upper Bound} & \textit{6.21 $\pm$ 0.07} & \textit{7.85 $\pm$ 0.10} & \textit{16.82 $\pm$ 0.15} & \textit{3.95 $\pm$ 0.25} & \textit{27.58 $\pm$ 0.62} & \textit{0.87 $\pm$ 0.06} & \textit{38.11 $\pm$ 1.89} & \textit{643.9 $\pm$ 6.1} & \textit{0.720 $\pm$ 0.019} \\
+\textit{OracleSelector Upper Bound} & \textit{6.26 $\pm$ 0.06} & \textit{7.85 $\pm$ 0.09} & \textit{17.96 $\pm$ 0.17} & \textit{11.20 $\pm$ 0.74} & \textit{19.99 $\pm$ 0.83} & \textit{0.73 $\pm$ 0.05} & \textit{39.33 $\pm$ 2.00} & \textit{658.4 $\pm$ 4.1} & \textit{1.020 $\pm$ 0.032} \\
+\bottomrule
+\end{tabular}
+\end{table*}

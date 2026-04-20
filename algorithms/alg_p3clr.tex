@@ -1,0 +1,25 @@
+\begin{algorithm}[!t]
+\caption{\pclr\ Scheduling}
+\label{alg:p3clr}
+\begin{algorithmic}[1]
+\REQUIRE Swarm states, demand clusters, cache states, trained link predictor, dwell parameters
+\ENSURE Assignment $x_{s,k,t}$ and updated queue, cache, energy, and handover states
+\STATE Form active demand clusters and persistent cluster identifiers.
+\FOR{each feasible pair $(s,k)$}
+    \STATE Predict link margin and outage risk using Algorithm~\ref{alg:link_prediction}.
+    \STATE Estimate expected service $\mu_{s,k,t}$.
+    \STATE Compute useful local and neighbor cache value.
+    \STATE Compute delay, energy, load, fairness, dwell, and switch costs.
+    \STATE Normalize all score terms over feasible pairs in the current slot.
+    \STATE Compute $B_{s,k,t}$ using \eqref{eq:p3clr_score}.
+\ENDFOR
+\STATE Sort clusters by deadline-aware urgency and backlog.
+\FOR{each cluster in sorted order}
+    \STATE Select the feasible swarm with the largest score.
+    \STATE Apply dwell guard; keep the previous swarm when it is feasible and the score gain is small.
+    \STATE Commit assignment if capacity and energy constraints are satisfied.
+\ENDFOR
+\STATE Serve traffic and update $Q_{k,t+1}$ using \eqref{eq:queue_update}.
+\STATE Update cache, energy, load, delay, outage, drop, and handover counters.
+\end{algorithmic}
+\end{algorithm}

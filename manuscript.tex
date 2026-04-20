@@ -1,0 +1,52 @@
+\documentclass[journal]{IEEEtran}
+
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{cite}
+\usepackage{url}
+\usepackage{xcolor}
+\usepackage{balance}
+
+\newcommand{\pchorch}{P3C-Orch}
+\newcommand{\pclr}{P3C-LR Core}
+\newcommand{\psr}{P3C-SR}
+\newcommand{\etp}{ET-P3C}
+\newcommand{\vect}[1]{\mathbf{#1}}
+\newcommand{\norm}[1]{\widetilde{#1}}
+
+\begin{document}
+
+\title{Predictive 3C Orchestration for UAV-Swarm Low-Altitude IoT under Environmental Link Uncertainty}
+
+% TODO: Replace author names, emails, ORCID, and affiliation before submission.
+\author{First Author, Second Author, and Third Author% <-this % stops a space
+\thanks{The authors are with the Department of Computer Science and Engineering, National Institute of Technology Meghalaya, India.}%
+\thanks{Implementation availability details are given in the reproducibility note.}% TODO: Replace author metadata before submission.
+}
+
+\markboth{IEEE Internet of Things Journal, Draft Manuscript}{P3C-Orch for UAV-Swarm Low-Altitude IoT}
+
+\maketitle
+
+\input{sections/00_abstract}
+\input{sections/01_introduction}
+\input{sections/02_related_work}
+\input{sections/03_system_model}
+\input{sections/04_link_risk_prediction}
+\input{sections/05_p3c_orch_framework}
+\input{sections/06_algorithms}
+\input{sections/07_experimental_setup}
+\input{sections/08_results}
+\input{sections/09_ablation_and_limitations}
+\input{sections/10_conclusion}
+
+\balance
+\bibliographystyle{IEEEtran}
+\bibliography{refs/references}
+
+\end{document}

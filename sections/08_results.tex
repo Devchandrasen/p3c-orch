@@ -1,0 +1,83 @@
+\section{Results and Discussion}
+\subsection{Link-Risk Prediction Performance}
+The ANN predictor gives an overall RMSE of 4.592 dB, MAE of 3.865 dB, and Pearson correlation of 0.810. Weather-wise RMSE is 4.494 dB for clear, 4.608 dB for rainy, and 4.919 dB for rain-hot. This supports the use of weather-wise calibration, but it also shows that harsh-weather prediction remains imperfect.
+
+\subsection{Main Result Against External Baselines}
+Table~\ref{tab:main_results} gives the combined-stress paper-lock results. \pclr\ has objective 0.684, while Reactive-3C has 0.731. This is a 6.47\% objective improvement over Reactive-3C. \pclr\ reduces average delay by 0.61\%, p95 delay by 2.14\%, handovers by 24.52\%, and outage by 9.14\%. The corrected p-values are 0.00653 for average delay, $7.60\times10^{-7}$ for p95 delay, $2.53\times10^{-7}$ for handovers, and 0.0285 for outage. These are treated as statistically reliable.
+
+\pclr\ does not dominate all metrics. Compared with Reactive-3C, it increases energy consumption by 0.72\%, reduces useful cache hit ratio by 1.05\%, and increases drop rate by 0.53\%. The energy difference is Holm-corrected significant, but it is a worsening for \pclr. The useful cache and drop-rate differences are not corrected significant in the Reactive-3C comparison.
+
+\input{tables/main_results}
+\input{tables/external_baseline_comparison}
+
+\subsection{Comparison with MUCCO-like and RateMax}
+Compared with MUCCO-like, \pclr\ improves the objective by 44.32\%, average delay by 1.01\%, p95 delay by 2.56\%, handovers by 83.33\%, and useful cache hit ratio by 2.96\%. It uses 1.44\% more energy, has 11.40\% higher outage, and has 2.38\% higher drop rate. This shows that MUCCO-like remains strong on energy and drop rate, but it has much higher handover cost in this dynamic setting.
+
+Compared with RateMax, \pclr\ improves the objective by 67.20\%, average delay by 2.89\%, energy by 16.77\%, handovers by 91.52\%, drop rate by 11.37\%, and throughput by 10.27\%. However, RateMax has 1.67\% better p95 delay and 6.22\% lower outage in the combined-stress table. Thus, rate maximization alone is not enough for the aggregate energy-latency-handover objective, but it can still help some tail or outage metrics.
+
+\subsection{Internal Variant Analysis}
+Table~\ref{tab:internal_variant} compares \pclr, \psr, and \etp. \psr\ achieves the best aggregate non-oracle objective, 0.671, and is therefore the strongest overall non-oracle method by the paper objective. \pclr\ is the lightweight core and ranks first against external baselines. \etp\ is close to both methods but does not provide reliable additional gain. The manuscript therefore presents \pchorch\ as a framework containing the practical core and the stability-regularized internal variant.
+
+\input{tables/internal_variant_comparison}
+
+\subsection{Regime-Wise Behaviour}
+Fig.~\ref{fig:delay_cdf} shows the delay CDF under the paper-lock evaluation. Figs.~\ref{fig:energy_regime} and~\ref{fig:handover_regime} show energy and handover behaviour by regime. \pclr\ is useful when link risk and handover decisions matter, but the gains vary by regime. The regime-wise table is generated in \texttt{tables/regime\_results.tex} and retained for detailed checking.
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=\columnwidth]{figs/delay_cdf_paperlock.pdf}
+\caption{Delay CDF for the main methods. The figure compares external baselines and internal variants under the final paper-lock evaluation.}
+\label{fig:delay_cdf}
+\end{figure}
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=\columnwidth]{figs/energy_by_regime_paperlock.pdf}
+\caption{Energy consumption by regime. \pclr\ improves the aggregate objective against external baselines but has a small energy cost compared with Reactive-3C under combined stress.}
+\label{fig:energy_regime}
+\end{figure}
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=\columnwidth]{figs/handover_by_regime_paperlock.pdf}
+\caption{Handovers per 100 active cluster-slots by regime. Mobility-aware dwell control reduces unnecessary switching compared with rate-centric and caching-centric baselines.}
+\label{fig:handover_regime}
+\end{figure}
+
+\subsection{Cache, Weather, and Oracle Gap}
+Fig.~\ref{fig:cache_breakdown} shows cache-hit behaviour. Cache value helps when a hit reduces delay or energy, but \pclr\ can lose useful cache hit ratio against Reactive-3C because the scheduler also gives weight to outage and dwell. Fig.~\ref{fig:outage_weather} shows outage by weather. Fig.~\ref{fig:oracle_gap} shows the gap to upper bounds. Oracle methods are not practical baselines and are used only to show remaining headroom.
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=\columnwidth]{figs/cache_hit_breakdown_paperlock.pdf}
+\caption{Cache hit breakdown for the main methods. The figure separates cache effects instead of treating every cached file as useful.}
+\label{fig:cache_breakdown}
+\end{figure}
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=\columnwidth]{figs/outage_by_weather_paperlock.pdf}
+\caption{Outage behaviour by weather. Harsh weather increases link risk, which motivates prediction and calibration.}
+\label{fig:outage_weather}
+\end{figure}
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=\columnwidth]{figs/oracle_gap_paperlock.pdf}
+\caption{Oracle gap under the paper-lock objective. OracleLink and OracleSelector are upper bounds and are excluded from practical ranking.}
+\label{fig:oracle_gap}
+\end{figure}
+
+\subsection{Statistical Significance}
+Only Holm-corrected significant results are treated as statistically reliable. Table~\ref{tab:significance} reports the corrected p-values. The main supported improvements over Reactive-3C are average delay, p95 delay, handovers, and outage. Energy is also corrected significant, but it is worse for \pclr. Hence, the main claim is a latency-handover-outage tradeoff, not universal dominance.
+
+\input{tables/significance_results}
+
+\subsection{Main Observations}
+\begin{itemize}
+    \item Link-risk prediction is useful when weather and mobility change the service quality.
+    \item Mobility-aware dwell control reduces unnecessary handovers.
+    \item Cache value helps when cached content reduces delay or energy, but cache hit ratio can drop when link-risk and dwell terms dominate.
+    \item \psr\ gives the best aggregate non-oracle objective, but it does not remove all tradeoffs.
+    \item \etp\ did not give reliable additional gain in this implementation.
+\end{itemize}
