@@ -1,0 +1,40 @@
+simulation:
+  slots: 30
+  area_size_m: 1000.0
+  swarms: 4
+  clusters: 10
+  cache_size: 15
+  library_size: 100
+  arrival_rate: 2.0
+  deadline_min: 4
+  deadline_max: 8
+  seeds: [4001, 4002, 4003]
+  methods: [nearest, rate-max, reactive-3c, p3c-lr, p3c-sr]
+  weather_probabilities:
+    clear: 0.60
+    rainy: 0.25
+    rain_hot: 0.15
+
+predictor:
+  margin_threshold_db: 0.0
+  model_path: null
+  residual_scale_db:
+    clear: 4.711
+    rainy: 4.108
+    rain_hot: 4.310
+
+scheduler:
+  dwell_threshold: 0.05
+  minimum_energy_kj: 5.0
+  stability_weight: 0.15
+  load_regularization: 0.10
+  weights:
+    margin: 0.20
+    cache: 0.15
+    fairness: 0.08
+    dwell: 0.12
+    delay: 0.15
+    energy: 0.08
+    outage: 0.10
+    switch: 0.07
+    load: 0.05

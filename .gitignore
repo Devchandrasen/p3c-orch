@@ -1,23 +1,16 @@
-# LaTeX build artifacts
-*.aux
-*.bbl
-*.blg
-*.log
-*.out
-*.toc
-*.fls
-*.fdb_latexmk
-*.synctex.gz
-
-# Generated local package and duplicate root PDF
-/paper.zip
-/manuscript.pdf
-
-# Keep final compiled PDF only in output/
-/output/*
-!/output/manuscript.pdf
-
-# OS/editor files
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+dist/
+build/
+results/
+models/*.npz
 .DS_Store
-*.swp
-*~
+.idea/
+.vscode/

@@ -1,0 +1,46 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "p3c-orch"
+version = "0.1.0"
+description = "Predictive 3C orchestration reference implementation for UAV-swarm IoT"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{ name = "P3C-Orch contributors" }]
+keywords = ["uav", "iot", "edge-computing", "resource-allocation", "simulation"]
+dependencies = [
+  "numpy>=1.24",
+  "PyYAML>=6.0",
+]
+
+[project.urls]
+Repository = "https://github.com/Devchandrasen/p3c-orch"
+Issues = "https://github.com/Devchandrasen/p3c-orch/issues"
+
+[project.optional-dependencies]
+ml = [
+  "scikit-learn>=1.3",
+]
+dev = [
+  "pytest>=8.0",
+  "ruff>=0.5",
+]
+
+[project.scripts]
+p3c-orch = "p3c_orch.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
