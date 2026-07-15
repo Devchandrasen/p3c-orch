@@ -7,7 +7,7 @@ import json
 import math
 import statistics
 from dataclasses import asdict, dataclass
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 from pathlib import Path
 
 import numpy as np
@@ -558,7 +558,7 @@ def run_experiment(config: ProjectConfig, output_dir: str | Path) -> dict[str, P
 
     metadata_path = output / "run_metadata.json"
     metadata = {
-        "created_at": datetime.now(UTC).isoformat(),
+        "created_at": datetime.now(timezone.utc).isoformat(),
         "configuration": config.to_dict(),
         "detailed_metrics": detailed_path.name,
         "summary": summary_path.name,
