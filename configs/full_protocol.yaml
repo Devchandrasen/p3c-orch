@@ -1,0 +1,86 @@
+simulation:
+  slots: 200
+  area_size_m: 1000.0
+  swarms: 4
+  clusters: 10
+  users: 60
+  uavs_per_swarm_min: 6
+  uavs_per_swarm_max: 10
+  cache_size: 15
+  cache_capacity_mb: 80.0
+  library_size: 100
+  file_size_min_mb: 1.0
+  file_size_max_mb: 10.0
+  content_ttl_slots: 30
+  zipf_exponent: 1.35
+  arrival_rate: 2.0
+  burst_probability: 0.10
+  burst_multiplier: 3.0
+  deadline_min: 4
+  deadline_max: 8
+  gauss_markov_alpha: 0.85
+  user_speed_std_mps: 6.0
+  mobility_noise_std_mps: 1.5
+  weather_persistence: 0.80
+  seeds: [4001, 4002, 4003, 4004, 4005, 4006, 4007, 4008, 4009, 4010, 4011, 4012, 4013, 4014, 4015, 4016, 4017, 4018, 4019, 4020, 4021, 4022, 4023, 4024, 4025, 4026, 4027, 4028, 4029, 4030, 4031, 4032, 4033, 4034, 4035, 4036, 4037, 4038, 4039, 4040, 4041, 4042, 4043, 4044, 4045, 4046, 4047, 4048, 4049, 4050, 4051, 4052, 4053, 4054, 4055, 4056, 4057, 4058, 4059, 4060, 4061, 4062, 4063, 4064, 4065, 4066, 4067, 4068, 4069, 4070, 4071, 4072, 4073, 4074, 4075, 4076, 4077, 4078, 4079, 4080]
+  methods: [random, nearest, rate-max, mucco-like, reactive-3c, p3c-lr, p3c-sr, et-p3c]
+  regimes:
+    - r1-normal
+    - r2-near-saturation
+    - r3-overload
+    - r4-severe-burst
+    - r5-harsh-weather
+    - r6-high-mobility
+    - r7-combined-stress
+  weather_probabilities:
+    clear: 0.60
+    rainy: 0.25
+    rain_hot: 0.15
+
+channel:
+  carrier_frequency_hz: 2.4e9
+  noise_density_dbm_hz: -174.0
+  receiver_noise_figure_db: 7.0
+  los_environment_a: 9.61
+  los_environment_b: 0.16
+  los_excess_loss_db: 1.0
+  nlos_excess_loss_db: 20.0
+  required_snr_db: 3.0
+  maximum_link_distance_m: 1500.0
+  spectral_efficiency_cap: 8.0
+
+predictor:
+  margin_threshold_db: 0.0
+  model_path: null
+  residual_scale_db:
+    clear: 4.711
+    rainy: 4.108
+    rain_hot: 4.310
+
+scheduler:
+  dwell_threshold: 0.05
+  minimum_energy_kj: 5.0
+  stability_weight: 0.15
+  load_regularization: 0.10
+  event_risk_threshold: 0.65
+  event_impulse_cap: 0.12
+  cache_local_weight: 1.0
+  cache_neighbor_weight: 0.5
+  cache_stale_penalty: 0.25
+  cache_fetch_penalty: 0.15
+  delay_deadline_weight: 0.30
+  delay_queue_weight: 0.35
+  delay_miss_weight: 0.15
+  delay_outage_weight: 0.20
+  switch_fixed_cost: 0.20
+  switch_distance_cost: 0.001
+  weights:
+    margin: 0.20
+    cache: 0.15
+    fairness: 0.08
+    dwell: 0.12
+    delay: 0.15
+    energy: 0.08
+    outage: 0.10
+    switch: 0.07
+    load: 0.05
